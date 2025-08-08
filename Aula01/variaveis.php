@@ -8,4 +8,5 @@
  
  $data_nasc= $ano_atual-$idade;
  echo $nome, "você nasceu em:", $data_nasc;
+ 
 ?> 
