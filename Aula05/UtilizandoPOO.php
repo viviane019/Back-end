@@ -13,11 +13,20 @@ class Carro {
         $this->revisao = $revisao;
         $this->N_Donos = $N_Donos;
     }
+
+
+
+ //Método pra exibir as informações do carro
+ public function exibirInfo(): void {
+    echo "Marca: $this->marca, Modelo: $this->modelo, Ano: $this->ano\n";
+ }
+
+  //Metodo para ligar o carro
+  public function ligar(): void {
+    echo " O carro $this->modelo está ligad!\n";
+  }
 }
 
-$carro1 = new Carro("Porche", "911", 2020, false, 3);
-$carro2 = new Carro("Ford", "Mustang", 2018, true, 4);
-$Carro3 = new Carro( "Toyota", "Corolla", 2021, false, N_Donos: 2 );
-$Carro4 = new Carro( "Ford", "Mustang", 2019, true, N_Donos: 4 );
-$Carro5 = new Carro( "Chevrolet", "Camaro", 2022, false, N_Donos: 1 );
-$Carro6 = new Carro( "Honda", "Civic", 2020, true, N_Donos: 3 );
+$carro2->ligar(); //Chama o método para ligar carro 2
+$carro4->exibirInfo();//Chamado método para exibir informações do carro 4
+?>  
