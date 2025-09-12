@@ -74,3 +74,37 @@ echo "Área do quadrado: " . $q->calcularArea() . "\n";
 
 $c = new Circulo(3);
 echo "Área do círculo: " . $c->calcularArea() . "\n";    
+
+class Pentagono implements Forma {
+    private $lado;
+    private $apotema;
+
+    public function __construct($lado, $apotema) {
+        $this->lado = $lado;
+        $this->apotema = $apotema;
+    }
+
+    public function calcularArea() {
+        return (5 * $this->lado * $this->apotema) / 2;
+    }
+}
+
+$p = new Pentagono(4, 3);
+echo "Área do pentágono: " . $p->calcularArea() . "\n";
+
+
+class hexagono implements Forma {
+    private $lado;
+    private $apotema;
+
+    public function __construct($lado, $apotema) {
+        $this->lado = $lado;
+        $this->apotema = $apotema;
+    }
+
+    public function calcularArea() {
+        return (6 * $this->lado * $this->apotema) / 2;
+    }
+
+
+}
