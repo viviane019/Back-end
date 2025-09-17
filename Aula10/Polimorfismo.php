@@ -8,16 +8,21 @@ interface Veiculo {
     public function mover(): void;
 }
 class Carro implements Veiculo {
+    public $nome;
     public function mover(): void {
         echo "O carro está dirigindo na estrada.\n";
     }
 }
+
 class Aviao implements Veiculo {
+    public $nome;
     public function mover(): void {
         echo "O avião está voando no céu.\n";
     }
 }
+
 class Barco implements Veiculo {
+    public $nome;
     public function mover(): void {
         echo "O barco está navegando.\n";
     }
@@ -29,25 +34,11 @@ class Elevador implements Veiculo {
 }
 
 $carro1 = new Carro();
-$carro2 = new Carro();
-
-$aviao1 = new Aviao();
-$aviao2 = new Aviao();
-
-$barco1 = new Barco();
-$barco2 = new Barco();
-
-$elevador1 = new Elevador();
-$elevador2 = new Elevador();
-
+$carro1->nome = "Fusca";
 $carro1->mover();
-$carro2->mover();
-
+$aviao1 = new Aviao();
+$aviao1->nome = "Cessna";
 $aviao1->mover();
-$aviao2->mover();
-
+$barco1 = new Barco();
+$barco1->nome = "Titanic";
 $barco1->mover();
-$barco2->mover();
-
-$elevador1->mover();
-$elevador2->mover();
