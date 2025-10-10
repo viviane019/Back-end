@@ -1,4 +1,4 @@
-<?php
+,<?php
 //Heróis e Personagens
 class Local {
     public $nome;
