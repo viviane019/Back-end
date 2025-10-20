@@ -1,22 +1,20 @@
 <?php
-$CODIGO = $_POST['codigo'];
-$UNIDADE = $_POST['unidade'];
-$DESCRICAO = $_POST['descricao'];
-$VALOR_UNIT = $_POST['valor_unit'];
+$nome = $_POST['nome'];
+$email = $_POST['email'];
 
-$conn = new mysqli("localhost", "root", "senaisp", "remoterc");
+$conn = new mysqli("localhost", "root", "senaisp", "livraria");
 
 if ($conn->connect_error) {
     die("Erro de conexão: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO produto (CODIGO, UNIDADE, DESCRICAO, VALOR_UNIT) VALUES ('$CODIGO', '$UNIDADE', '$DESCRICAO', '$VALOR_UNIT')";
+$sql = "INSERT INTO usuarios (nome, email) VALUES ('$nome', '$email')";
 if ($conn->query($sql) === TRUE) {
     echo "Dados salvos com sucesso!";
 } else {
     echo "Erro" . $conn->error;
 }
-// header("Location: index1.html");
+// header("Location: index.html");
 exit;
 $conn->close();
 ?>
