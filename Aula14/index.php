@@ -5,7 +5,7 @@
 //Apague a maça e o tomate dos produtos (aqui nao somos saudaveis)
 namespace Aula14; 
 require_once "produtoDAO.php";
-require_once "Produtos.php";
+require_once "produtos.php";
 
 
 

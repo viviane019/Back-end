@@ -1,0 +1,23 @@
+{
+    "Amora": {
+        "nome": "Amora",
+        "categoria": "Suco",
+        "volume": "300 ml",
+        "valor": "10.00",
+        "qtde": "10"
+    },
+    "Coca-Cola": {
+        "nome": "Coca-Cola",
+        "categoria": "Refrigerante",
+        "volume": "300 ml",
+        "valor": "2.00",
+        "qtde": "200"
+    },
+    "LaraMora": {
+        "nome": "LaraMora",
+        "categoria": "Suco",
+        "volume": "300 ml",
+        "valor": "10.00",
+        "qtde": "10"
+    }
+}
