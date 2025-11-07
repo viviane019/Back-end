@@ -19,5 +19,12 @@
         "volume": "300 ml",
         "valor": "10.00",
         "qtde": "10"
+    },
+    "Guaraná": {
+        "nome": "Guaraná",
+        "categoria": "Refrigerante",
+        "volume": "1 litro ",
+        "valor": "10",
+        "qtde": "100"
     }
 }

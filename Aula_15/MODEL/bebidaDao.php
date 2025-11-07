@@ -37,7 +37,7 @@ class BebidaDAO {
             'qtde' => $bebida->getQtde()
         ];
     }   
-    file_put_contents($this->arquivoJson, json_encode($dadosParaSalvar, JSON_PRETTY_PRINT));
+    file_put_contents($this->arquivoJson, json_encode($dadosParaSalvar, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE));
   }
   // create
   public function criarBebidas(Bebida $bebida){
