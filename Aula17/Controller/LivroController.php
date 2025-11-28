@@ -24,7 +24,6 @@ class LivroController {
     }
 
     // UPDATE
-
     public function atualizar($id, $titulo, $autor, $ano, $genero, $quantidade) {
         $this->dao->atualizarLivro($id, $titulo, $autor, $ano, $genero, $quantidade);
     }

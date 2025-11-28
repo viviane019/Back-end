@@ -2,31 +2,42 @@
 
 namespace Aula17;
 
+// A única coisa que pode causar um erro fatal é o caminho, confirme se este caminho é correto:
 require_once __DIR__. '/../Controller/LivroController.php';
 
 $controller = new LivroController();
 $livroParaEditar = null; 
-$id = $_REQUEST['id'] ?? null; 
+// Usar (int) na variável $id lida com a entrada de dados e garante que a busca por ID funcione
+$id = (int)($_REQUEST['id'] ?? 0); 
 
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'atualizar' && $id) { 
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && ($_POST['acao'] ?? '') === 'atualizar' && $id > 0) { 
     
+    // CORREÇÃO: As variáveis inteiras devem garantir que o índice existe antes da conversão.
+    $id              = (int)($_POST['id'] ?? 0);   
     $novoTitulo      = $_POST['titulo'] ?? '';
-    $novoAutor       = $_POST['autor'] ?? '';
-    $novoAno         = (int)$_POST['ano'] ?? 0;
+    $novoAutor       = $_POST['autor'] ?? ''; 
+    $novoAno         = (int)($_POST['ano'] ?? 0);
     $novoGenero      = $_POST['genero'] ?? '';
-    $novaQuantidade  = (int)$_POST['quantidade'] ?? 0;
+    $novaQuantidade  = (int)($_POST['quantidade'] ?? 0); // O CAMPO QUANTIDADE É LIDO CORRETAMENTE AQUI
 
- 
-    $controller->atualizar($id, $novoTitulo, $novoAutor, $novoAno, $novoGenero, $novaQuantidade);
+    try {
+        // ESSA LINHA FAZ O SALVAMENTO:
+        $controller->atualizar($id, $novoTitulo, $novoAutor, $novoAno, $novoGenero, $novaQuantidade);
 
-    header('Location: index.php?feedback=' . urlencode("Livro '{$novoTitulo}' atualizado com sucesso!")); 
-    exit();
+        // Redireciona com feedback de sucesso
+        header('Location: index.php?feedback=' . urlencode("Livro '{$novoTitulo}' atualizado com sucesso!")); 
+        exit();
+    } catch (\PDOException $e) {
+        // Tratar erros de banco de dados, se houver falha na atualização
+        header('Location: index.php?feedback=' . urlencode("Erro ao atualizar Livro '{$novoTitulo}': " . $e->getMessage())); 
+        exit();
+    }
 }
 
 
-
-if ($id) {
+// O ID é validado como número inteiro no início do script.
+if ($id > 0) {
     $livroData = $controller->buscarPorId($id);
     
     if ($livroData) {
@@ -35,10 +46,12 @@ if ($id) {
 } 
 
 if (!$livroParaEditar) {
+    // Se não encontrou o livro, redireciona
     header('Location: index.php?feedback=' . urlencode("Erro: Livro não encontrado para edição."));
     exit();
 }
 
+// Essa linha é mantida por coerência, embora $id já contenha o valor correto.
 $id = $livroData['id'];
 
 ?>
